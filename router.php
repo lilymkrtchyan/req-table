@@ -43,6 +43,8 @@ $request_uri = explode('?', $_SERVER['REQUEST_URI'], 2)[0];
 if ($php_file = match_routes($request_uri, ROUTES)) {
 
   // Include PHP file from route look-up
+  include_once('includes/db.php');
+
   require $php_file;
 } else if ($file_path = match_static($request_uri)) {
 

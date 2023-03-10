@@ -80,7 +80,9 @@ Audience device justification: Looking at data/list/table is easier on a wide sc
 > Use the goals you identified above to develop a persona of your site's audience.
 > Your persona must have a name and a face. The face can be a photo of a face or a drawing, etc.
 
-persona's face
+persona's face:
+![Ann's face](Ann.jpg)
+The image is downloaded from Pinterest.
 
 persona name: Ann
 
@@ -139,13 +141,20 @@ Justify why this data aids the persona with their goals.
 > Provide a brief explanation _underneath_ each sketch. (1 sentence)
 > **Refer to your persona by name in each explanation.**
 
-TODO: sketch(es) + explanation
+sketch(es) + explanation:
+
+![Table sketch one](table_sketch_one.jpg)
+This sketch contains filters and a search field, which we shouldn't use for this project but these are common practices when presenting a data in a table format.
+
+![Table sketch two](table_sketch_two.jpg)
+This sketch contains the title of the table and all the relevant fields.
 
 
 ### Catalog Design Patterns (Milestone 1)
 > Explain how you used design patterns for online catalogs in your site's design. (1-2 sentences)
 
-TODO: design pattern explanation
+design pattern explanation:
+I sketched a dataset that looks like a table. There are no vertical lines - only horizontal lines. The horizontal line should ideally be below the field name which will be corrected for the next milstone. I am planning to have a light background for the table which is also a design pattern for a table. A good design pattern for a table is that the background color varies so that it is easier to differentiate between the rows. In the sketches it is not aparent but that is also something that I have planned to implement. As we covered during the lecture some design patterns for a table data are a search field and filters, as well as no pagination. Although one of my designs contains filtering and searching I know that it will be implemented for the last project instead. For this table I will need to add the insert field which will be updated.
 
 
 ## Implementation Plan (Milestone 1, Milestone 2)

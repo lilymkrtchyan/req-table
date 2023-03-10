@@ -1,17 +1,18 @@
 <?php
 
 const TYPE = array(
-  0 => 'To Declare',
-  1 => 'Concentration',
-  2 => 'Elective',
-  3 => 'Math',
-  4 => 'Statistics',
-  5 => 'Coding'
-);
+    0 => 'Core',
+    1 => 'Elective',
+    2 => 'Concentration',
+    3 => 'Math',
+    4 => 'Statistics',
+    5 => 'Coding'
+  );
 
-// open database
-$db = open_sqlite_db('secure/site.sqlite');
+  $db = open_sqlite_db('secure/site.sqlite');
+
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -19,48 +20,42 @@ $db = open_sqlite_db('secure/site.sqlite');
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-
+  <title>Info Sci Courses</title>
 
   <link rel="stylesheet" type="text/css" href="/public/styles/site.css" media="all">
 </head>
 
 <body>
 
-
-    <?php
+<?php
     // query DB
     $result = exec_sql_query($db, 'SELECT * FROM courses;');
     $records = $result->fetchAll();
     ?>
-
-    <ul>
+<center>
+    <h1>INFORMATION SCIENCE MAJOR REQUIREMENTS</h1>
+<table>
       <?php foreach ($records as $record) { ?>
+       <tr>
 
-        <li>
-          <div>
-            <h3><?php echo htmlspecialchars($record['name']); ?></h3>
+          <div class="course">
+            <th><?php echo htmlspecialchars($record['name']); ?></th>
 
-            <p><?php echo htmlspecialchars($record['department']); ?> </p>
+            <th><?php echo htmlspecialchars($record['code']); ?></th>
 
-            <p><?php echo htmlspecialchars($record['code']); ?> </p>
+            <th><?php echo htmlspecialchars($record['department']); ?></th>
 
-            <div>
-              <?php echo htmlspecialchars(TYPE[$record['type']]); ?>
-            </div>
 
-            <p><?php echo htmlspecialchars($record['description']); ?> </p>
+             <th> <?php echo htmlspecialchars(TYPE[$record['type']]); ?> </th>
 
-            <p><?php echo htmlspecialchars($record['pre-req']); ?> </p>
 
           </div>
-
-        </li>
-
+      </tr>
       <?php } ?>
-    </ul>
+      </table>
 
-  </main>
-
+      <p>The list of the courses (course numbers, codes, departments, and some of the descriptions) are copied from Cornell University's Information Science website.</p>
+</center>
 
 </body>
 

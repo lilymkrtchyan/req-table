@@ -21,16 +21,20 @@ You can use bullet points and lists, or full paragraphs, or a combo, whichever i
 ### Catalog (Milestone 1)
 > What will your catalog website be about? (1 sentence)
 
-TODO: catalog topic
+catalog topic: Graduation requirements for Information Science majors
 
 
 ### Audience (Milestone 1)
 > Briefly explain your site's audience. Your audience should be specific, but not arbitrarily specific. (1 sentence)
 > Justify why this audience is a **cohesive** group. (1-2 sentences)
 
-TODO: site audience
+site audience:
 
-TODO: why is this a _cohesive_ audience?
+Cornell students who major in (plan to major in) Information Science
+
+why is this a _cohesive_ audience?
+
+This is a cohesive audience because they all have the same goal: to graduate with the information science degree and they all have the same needs and requirements from this website which is to learn about all the requirements.
 
 
 ### Audience Goals (Milestone 1)
@@ -38,69 +42,88 @@ TODO: why is this a _cohesive_ audience?
 > List each goal below. There is no specific number of goals required for this, but you need enough to do the job (Hint: It's more than 1. But probably not more than 3.)
 > **Hint:** Users will be able to view all entries in the catalog and insert new entries into the catalog. The audience's goals should probably relate to these activities.
 
-Goal 1: TODO: brief title
+Goal 1: Check all the courses to declare the information science major.
 
 - **Design Ideas and Choices** _How will you meet those goals in your design?_
-  - TODO: design ideas (1-2 sentences)
+  - design ideas (1-2 sentences)
+  - Create a table with all the courses that will have a field indicating weather or not the course is required in order to affiliate with the information science major.
 - **Rationale & Additional Notes** _Justify your decisions; additional notes._
-  - TODO: rationale  (1-2 sentences)
+  - rationale  (1-2 sentences)
+  - Having a field in a table that would indicate if the course is required for declaring the major or not is important because unlike all the other major requirements (requirements that are mandatory for graduation), the requirements for affilliation are more time=sensitive. Students are required to declare their major by the end of the sophomore year, hence they need to know certainly which courses they need to prioritize taking sooner.
 
-Goal 2: TODO: brief title
+Goal 2: TCheck all the courses that are required in order to graduate with the degree.
 
 - **Design Ideas and Choices** _How will you meet those goals in your design?_
-  - TODO: design ideas (1-2 sentences)
+  - design ideas (1-2 sentences)
+  - I wil have all the courses listed in the table for the students to see every course (type of course) required to graduate. I will have fields for department code(s), as many information science courses are also cross-listed with other departments, the course number, the pre-reqs and the description of the course. Additionally, I will create a field that indicated for requirement group the course belongs to.
 - **Rationale & Additional Notes** _Justify your decisions; additional notes._
-  - TODO: rationale (1-2 sentences)
+  - rationale (1-2 sentences)
+  - Having different fields for each course makes it easier to process the course information. For example, having listed all the departments that a course belongs to would let the student know that even though they took a course under another department's code, it could still count for the information science major.
 
-Goal 3: TODO: brief title
+Goal 3: Check if the courses they have taken / they are taking are included in any of the sections within the major requirements.
 
-TODO: design ideas and rationale
+design ideas and rationale:
+We are not allowed to do searching and filtering for this project, however, if we were, that design choice would be the one to allow the students to look up their courses and see if they qualify for the major requirements.
 
-
-TODO: add as many goals as needed
 
 
 ### Audience Device (Milestone 1)
 > How will your audience access this website? From a narrow (phone) or wide (laptop) device?
 > Justify your decision. (1 sentence)
 
-TODO: audience device
+Taudience device: Wide device
 
-TODO: audience device justification
+Audience device justification: Looking at data/list/table is easier on a wide screen because the wide screen is bigger and hence reading on a bigger screen is easier.
 
 
 ### Persona (Milestone 1)
 > Use the goals you identified above to develop a persona of your site's audience.
 > Your persona must have a name and a face. The face can be a photo of a face or a drawing, etc.
 
-TODO: persona's face
+persona's face
 
-TODO: persona name
+persona name: Ann
 
 **Factors that Influence Behavior:**
 
-TODO: summary of the persona's factors that influence their behavior (1-2 bullet points)
+summary of the persona's factors that influence their behavior (1-2 bullet points):
+- Academic courses: lectures, homework, academic requirements, and grades
+- Extracuricular activities in university
+- On-campus Job
 
 **Goals:**
 
-TODO: summary of persona's goals (1-2 bullet points)
+summary of persona's goals (1-2 bullet points):
+- Ann wants to graduate with the information science degree
+- Ann wants to work as a data scientist or a software engineer
 
 **Obstacles:**
 
-TODO: summary of persona's obstacles (1-2 bullet points)
+summary of persona's obstacles (1-2 bullet points):
+- Ann needs to fulfill all the major requirements
+- Ann needs to find her first internship to launch a job later
 
 **Desires:**
 
-TODO: summary of persona's desires (1-2 bullet points)
+summary of persona's desires (1-2 bullet points):
+- Amm desires to fulfill her major requirements in the most optimal way possible
+- Ann wants to take other courses that are not neccessary required for the information science major
 
 
 ### Catalog Data (Milestone 1)
 > Using your persona, identify the data you need to include in the catalog for your site's audience.
 > Justify why this data aligns with your persona's goals. (1 sentence)
 
-TODO: list the data your persona will need to effectively use the catalog
+list the data your persona will need to effectively use the catalog:
+- Course name
+- Course code
+- Course Department
+- Requirement type
+- Pre-reqs
+- Course description
 
-TODO: Justify why this data aids the persona with their goals.
+Justify why this data aids the persona with their goals.
+- Ann wants to know the requirements hence having all the courses that she is required to take and that she can potentially take will help her create her schedule and graduate with the degree. For the requirements that she can choose from a group of courses, she will need the course descriptions to pick the ones that she thinks are the most suitable for her and also she wil need the course information to enroll in those courses. Additionally, she will need the pre requisite information to plan that in her schedule as well and she will need to know which requirement type the specific courses fall into for her to plan her major accordingly and in a balanced and optional way.
 
 
 
@@ -134,11 +157,14 @@ TODO: design pattern explanation
 > A bulleted list is probably the simplest way to do this.
 > Make sure you include constraints for each field.
 
-Table: TODO: table name
+Table: COURSES
 
-- field1: TYPE {constraints...},
-- field2...
-- TODO: table fields + type + constraints
+- ID: INTEGER {NN, U, PK, AI},
+- NAME: TEXT {NN, U},
+- TYPE: INTEGER {NN}
+- DEPARTMENT: TEXT {NN}
+- CODE: INTEGER {NN}
+- DESCRIPTION: TEXT {}
 
 
 ### Database Query Plan (Milestone 1, Final Submission)
@@ -148,7 +174,7 @@ Table: TODO: table name
 1. All Records (Milestone 1)
 
     ```
-    TODO: query for all records
+    SELECT * FROM courses
     ```
 
 2. Insert Record (Final Submission)

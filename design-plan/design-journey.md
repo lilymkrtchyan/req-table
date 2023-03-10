@@ -165,6 +165,7 @@ Table: COURSES
 - DEPARTMENT: TEXT {NN}
 - CODE: INTEGER {NN}
 - DESCRIPTION: TEXT {}
+- PRE-REQ: TEXT {}
 
 
 ### Database Query Plan (Milestone 1, Final Submission)

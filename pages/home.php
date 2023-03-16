@@ -53,7 +53,7 @@ const TYPE = array(
   $db = open_sqlite_db('secure/site.sqlite');
 
     //Check if the form is submitted
-    if (isset($_POST['sumbit-course'])){
+    if (isset($_POST['submit-course'])){
 
       //Store as variables
       $form_values['name'] = trim($_POST['name']);
@@ -70,23 +70,23 @@ const TYPE = array(
       //Name of the Course
       if ($form_values['name'] == '') {
         $form_valid = False;
-          $form_feedback['name'] = '';
+        $form_feedback['name'] = '';
       }
       if ($form_values['description'] == '') {
         $form_valid = False;
-          $form_feedback['description'] = '';
+        $form_feedback['description'] = '';
       }
       if ($form_values['department'] == '') {
         $form_valid = False;
-          $form_feedback['department'] = '';
+        $form_feedback['department'] = '';
       }
       if ($form_values['code'] == '') {
         $form_valid = False;
-          $form_feedback['code'] = '';
+        $form_feedback['code'] = '';
       }
       if ($form_values['type'] == '') {
         $form_valid = False;
-          $form_feedback['type'] = '';
+        $form_feedback['type'] = '';
       }
 
       //Check if the data is valid
@@ -158,25 +158,25 @@ const TYPE = array(
 <p class="feedback <?php echo $form_feedback['name']; ?>">Please insert the course name.</p>
         <div class="label-input">
           <label for="name">Class name:</label>
-          <input id="name" type="text" name="name" />
+          <input id="name" type="text" name="name" value="<?php echo $sticky_values['name']; ?>">
         </div>
 
         <p class="feedback <?php echo $form_feedback['department']; ?>">Please insert the department that the course is in.</p>
         <div class="label-input">
           <label for="department">Department:</label>
-          <input id="department" type="text" name="department" />
+          <input id="department" type="text" name="department" value="<?php echo $sticky_values['department']; ?>">
         </div>
 
         <p class="feedback <?php echo $form_feedback['code']; ?>">Please insert the course code.</p>
         <div class="label-input">
           <label for="code">Course Code:</label>
-          <input id="code" type="text" name="code" />
+          <input id="code" type="text" name="code" value="<?php echo $sticky_values['code']; ?>">
         </div>
 
         <p class="feedback <?php echo $form_feedback['description']; ?>">Please type in a short description for the course.</p>
         <div class="label-input">
           <label for="description">Course Description:</label>
-          <input id="description" type="text" name="description" />
+          <input id="description" type="text" name="description" value="<?php echo $sticky_values['description']; ?>">
         </div>
 
         <p class="feedback <?php echo $form_feedback['type']; ?>">Please select at least one type.</p>
@@ -185,30 +185,30 @@ const TYPE = array(
 
           <div>
             <div>
-              <input type="radio" id="core" name="type" value="core" />
+              <input type="radio" id="core" name="type" value="core" <?php echo $sticky_values['core']; ?>>
               <label for="core">Core Requirement</label>
             </div>
             <div>
-              <input type="radio" id="math" name="type" value="math" />
+              <input type="radio" id="math" name="type" value="math" <?php echo $sticky_values['math']; ?>>
               <label for="math">Mathematics Requirement</label>
             </div>
             <div>
-              <input type="radio" id="cs" name="type" value="cs" />
+              <input type="radio" id="cs" name="type" value="cs" <?php echo $sticky_values['cs']; ?>>
               <label for="cs">Computer Science Requirement</label>
             </div>
             <div>
-              <input type="radio" id="elective" name="type" value="elective" />
+              <input type="radio" id="elective" name="type" value="elective" <?php echo $sticky_values['elective']; ?>>
               <label for="elective">Elective</label>
             </div>
             <div>
-              <input type="radio" id="concentration" name="type" value="concentration" />
+              <input type="radio" id="concentration" name="type" value="concentration" <?php echo $sticky_values['concentration']; ?>>
               <label for="concentration">Concentration Requirement</label>
             </div>
           </div>
         </div>
 
         <div class="right">
-          <input type="submit" value="sumbit-course" name="sumbit-course" />
+          <input type="submit" value="submit-course" name="submit-course" />
         </div>
       </form>
       <?php } else { ?>

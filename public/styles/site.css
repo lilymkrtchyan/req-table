@@ -30,3 +30,7 @@ body {
 .feedback{
   color: red;
 }
+
+.hidden {
+  display: none;
+}

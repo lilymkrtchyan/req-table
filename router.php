@@ -1,7 +1,8 @@
 <?php
 
 const ROUTES = array(
-  '/' => 'pages/home.php'
+  '/' => 'pages/home.php',
+  '/confirmation' => 'confirmation.php'
 );
 
 function match_static($uri)

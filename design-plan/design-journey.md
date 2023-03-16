@@ -197,20 +197,41 @@ Table: COURSES
 ### From Validation (Milestone 2)
 > Plan the validation criteria for each piece of form data.
 
-- TODO: form data name
-  - TODO: form data criteria
-- TODO: form data name
-  - TODO: form data criteria
-- TODO: form data name
-  - TODO: form data criteria
-- ...
+-  name
+  - Not empty (Not Null)
+- type
+  - "chosen"
+- department
+  - Not Null
+- code
+  - Not Null
+- description
+  - Not Null
+- pre-requisits
+  - No criteria
 
 
 ### Form Planning (Milestone 2)
 > Plan your form validation using **pseudocode**.
 
 ```
-TODO: Form validation pseudocode
+form_valid = True
+If sumbitted:
+  If name=='':
+    form_valid=False
+    Show error message for nane
+  If !type:
+    form_valid=False
+    Show error message for type
+  If department=='':
+    form_valid=False
+    Show error message for department
+  If code=='':
+    form_valid=False
+    Show error message for code
+  If description=='':
+    form_valid = False
+    Show error message for description
 ```
 
 
@@ -219,17 +240,19 @@ TODO: Form validation pseudocode
 
 **Valid Test Data:**
 
-- TODO: form data name: "TODO: sample valid data"
-- TODO: form data name: "TODO: sample valid data"
-- TODO: form data name: "TODO: sample valid data"
-- ...
+- name: "Introduction to Web Programming and Design"
+- type: "Core"
+- code: 1300
+- department: "INFO"
+- description: "This class is an introduction to wev programming and design."
 
 **Invalid Test Data:**
 
-- TODO: form data name: "TODO: sample invalid data"
-- TODO: form data name: "TODO: sample invalid data"
-- TODO: form data name: "TODO: sample invalid data"
-- ...
+- name: '', 123, '123'
+- type: not checked - ''
+- department: ''
+- code: 'ababa', '', 0
+- description: ''
 
 
 ## Complete & Polished Website (Final Submission)

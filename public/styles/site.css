@@ -22,3 +22,11 @@ body {
     font-family: Verdana, Geneva, Tahoma, sans-serif;
     background-color: rgb(87, 83, 83);
 }
+
+.right{
+  align-self: end;
+}
+
+.feedback{
+  color: red;
+}

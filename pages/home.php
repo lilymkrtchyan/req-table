@@ -1,9 +1,5 @@
 <?php
 
-
-$title = 'Flowershop Confirmation';
-$nav_flowershop_class = 'active_page';
-
 $name = $_POST["name"];
 $department = $_POST["department"];
 $type = $_POST["type"];
@@ -19,7 +15,96 @@ const TYPE = array(
     5 => 'Coding'
   );
 
+
+  // Initialize
+  $show_confirmation = False;
+
+  // feedback messages
+  $form_feedback = array(
+    'name' => 'hidden',
+    'type' => 'hidden',
+    'department' => 'hidden',
+    'code' => 'hidden',
+    'description' => 'hidden'
+  );
+
+  //Values
+  $form_values = array(
+    'name' => '',
+    'type' => '',
+    'department' => '',
+    'code' => '',
+    'description' => ''
+  );
+
+    //Sticky Values
+    $sticky_values = array(
+      'name' => '',
+      'department' => '',
+      'code' => '',
+      'description' => '',
+      'core' => '',
+      'math' => '',
+      'cs' => '',
+      'elective' => '',
+      'concentration' => ''
+    );
+
   $db = open_sqlite_db('secure/site.sqlite');
+
+    //Check if the form is submitted
+    if (isset($_POST['sumbit-course'])){
+
+      //Store as variables
+      $form_values['name'] = trim($_POST['name']);
+      $form_values['type'] = trim($_POST['type']);
+      $form_values['department'] = trim($_POST['department']);
+      $form_values['code'] = trim($_POST['code']);
+      $form_values['description'] = trim($_POST['description']);
+
+      //Assume form is valid.
+      $form_valid = True;
+
+      //Validate the data
+
+      //Name of the Course
+      if ($form_values['name'] == '') {
+        $form_valid = False;
+          $form_feedback['name'] = '';
+      }
+      if ($form_values['description'] == '') {
+        $form_valid = False;
+          $form_feedback['description'] = '';
+      }
+      if ($form_values['department'] == '') {
+        $form_valid = False;
+          $form_feedback['department'] = '';
+      }
+      if ($form_values['code'] == '') {
+        $form_valid = False;
+          $form_feedback['code'] = '';
+      }
+      if ($form_values['type'] == '') {
+        $form_valid = False;
+          $form_feedback['type'] = '';
+      }
+
+      //Check if the data is valid
+      if ($form_valid){
+        $show_confirmation = True;
+    } else {
+        $sticky_values['name'] = $form_values['name'];
+        $sticky_values['department'] = $form_values['department'];
+        $sticky_values['code'] = $form_values['code'];
+        $sticky_values['description'] = $form_values['description'];
+        $sticky_values['core'] = ($form_values['type'] == 'core' ? 'checked' : '');
+        $sticky_values['math'] = ($form_values['type'] == 'math' ? 'checked' : '');
+        $sticky_values['cs'] = ($form_values['type'] == 'cs' ? 'checked' : '');
+        $sticky_values['elective'] = ($form_values['type'] == 'elective' ? 'checked' : '');
+        $sticky_values['concentration'] = ($form_values['type'] == 'concentration' ? 'checked' : '');
+
+          }
+    }
 
 ?>
 
@@ -67,34 +152,35 @@ const TYPE = array(
       <p>The list of the courses (course numbers, codes, departments, and some of the descriptions) are copied from Cornell University's Information Science website.</p>
 </center>
 
+<?php if (!$show_confirmation) { ?>
 <form method="post" action="/" novalidate>
 
+<p class="feedback <?php echo $form_feedback['name']; ?>">Please insert the course name.</p>
         <div class="label-input">
           <label for="name">Class name:</label>
           <input id="name" type="text" name="name" />
         </div>
 
+        <p class="feedback <?php echo $form_feedback['department']; ?>">Please insert the department that the course is in.</p>
         <div class="label-input">
           <label for="department">Department:</label>
           <input id="department" type="text" name="department" />
         </div>
 
+        <p class="feedback <?php echo $form_feedback['code']; ?>">Please insert the course code.</p>
         <div class="label-input">
           <label for="code">Course Code:</label>
           <input id="code" type="text" name="code" />
         </div>
 
+        <p class="feedback <?php echo $form_feedback['description']; ?>">Please type in a short description for the course.</p>
         <div class="label-input">
           <label for="description">Course Description:</label>
           <input id="description" type="text" name="description" />
         </div>
 
-        <div class="label-input">
-          <label for="phone_field">Department:</label>
-          <input id="department" type="text" name="department" />
-        </div>
-
-        <div class="form-group label-input" role="group" aria-labelledby="requirement_type">
+        <p class="feedback <?php echo $form_feedback['type']; ?>">Please select at least one type.</p>
+        <div role="group" aria-labelledby="requirement_type">
           <div id="type">Requirement Type:</div>
 
           <div>
@@ -121,10 +207,12 @@ const TYPE = array(
           </div>
         </div>
 
-        <div class="align-right">
-          <input type="submit" value="Sumbit Course" />
+        <div class="right">
+          <input type="submit" value="sumbit-course" name="sumbit-course" />
         </div>
       </form>
+      <?php } else { ?>
+
 
       <p>We added the course with the following information: </p>
 
@@ -145,7 +233,7 @@ const TYPE = array(
   <dd><?php echo htmlspecialchars($description); ?></dd>
 
 </dl>
-
+<?php } ?>
 
 </body>
 

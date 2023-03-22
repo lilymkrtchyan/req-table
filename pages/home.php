@@ -1,10 +1,10 @@
 <?php
 
-$name = $_POST["name"];
-$department = $_POST["department"];
-$type = $_POST["type"];
-$code = $_POST["code"];
-$description = $_POST["description"];
+$name = $_POST["name"]; //untrusted
+$department = $_POST["department"]; //untrusted
+$type = $_POST["type"]; //untrusted
+$code = $_POST["code"]; //untrusted
+$description = $_POST["description"]; //untrusted
 
 const TYPE = array(
     0 => 'Core',
@@ -55,17 +55,15 @@ const TYPE = array(
     //Check if the form is submitted
     if (isset($_POST['submit-course'])){
 
+    //Assume form is valid
+    $form_valid = True;
+
       //Store as variables
-      $form_values['name'] = trim($_POST['name']);
-      $form_values['type'] = trim($_POST['type']);
-      $form_values['department'] = trim($_POST['department']);
-      $form_values['code'] = trim($_POST['code']);
-      $form_values['description'] = trim($_POST['description']);
-
-      //Assume form is valid.
-      $form_valid = True;
-
-      //Validate the data
+      $form_values['name'] = trim($_POST['name']); //untrusted
+      $form_values['type'] = trim($_POST['type']); //untrusted
+      $form_values['department'] = trim($_POST['department']); //untrusted
+      $form_values['code'] = trim($_POST['code']); //untrusted
+      $form_values['description'] = trim($_POST['description']); //untrusted
 
       //Name of the Course
       if ($form_values['name'] == '') {
@@ -89,10 +87,34 @@ const TYPE = array(
         $form_feedback['type'] = '';
       }
 
+
+
       //Check if the data is valid
       if ($form_valid){
+
         $show_confirmation = True;
-    } else {
+
+        $result = exec_sql_query(
+          $db,
+          "INSERT INTO courses (name, code, department, type, description) VALUES (:coursename, :coursecode, :coursedepartment, :coursetype, :coursedescription);",
+          array(
+            ':coursename' => $name,
+            ':coursecode' => $code,
+            ':coursedepartment' => $department,
+            ':coursedescription' => $description,
+            ':coursetype' => $type
+          )
+        );
+
+        // query courses table
+        $result = exec_sql_query(
+          $db, 'SELECT * FROM courses;'
+        );
+
+        //get records from the courses table
+        $records = $result -> fetchall();
+
+      } else {
         $sticky_values['name'] = $form_values['name'];
         $sticky_values['department'] = $form_values['department'];
         $sticky_values['code'] = $form_values['code'];

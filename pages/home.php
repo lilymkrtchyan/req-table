@@ -4,7 +4,7 @@ $name = $_POST["name"]; //untrusted
 $department = $_POST["department"]; //untrusted
 $type = $_POST["type"]; //untrusted
 $code = $_POST["code"]; //untrusted
-$description = $_POST["description"]; //untrusted
+
 
 const TYPE = array(
     0 => 'Core',
@@ -24,8 +24,7 @@ const TYPE = array(
     'name' => 'hidden',
     'type' => 'hidden',
     'department' => 'hidden',
-    'code' => 'hidden',
-    'description' => 'hidden'
+    'code' => 'hidden'
   );
 
   //Values
@@ -33,8 +32,7 @@ const TYPE = array(
     'name' => '',
     'type' => '',
     'department' => '',
-    'code' => '',
-    'description' => ''
+    'code' => ''
   );
 
     //Sticky Values
@@ -42,7 +40,6 @@ const TYPE = array(
       'name' => '',
       'department' => '',
       'code' => '',
-      'description' => '',
       'core' => '',
       'math' => '',
       'cs' => '',
@@ -63,16 +60,11 @@ const TYPE = array(
       $form_values['type'] = trim($_POST['type']); //untrusted
       $form_values['department'] = trim($_POST['department']); //untrusted
       $form_values['code'] = trim($_POST['code']); //untrusted
-      $form_values['description'] = trim($_POST['description']); //untrusted
 
       //Name of the Course
       if ($form_values['name'] == '') {
         $form_valid = False;
         $form_feedback['name'] = '';
-      }
-      if ($form_values['description'] == '') {
-        $form_valid = False;
-        $form_feedback['description'] = '';
       }
       if ($form_values['department'] == '') {
         $form_valid = False;
@@ -96,12 +88,11 @@ const TYPE = array(
 
         $result = exec_sql_query(
           $db,
-          "INSERT INTO courses (name, code, department, type, description) VALUES (:coursename, :coursecode, :coursedepartment, :coursetype, :coursedescription);",
+          "INSERT INTO courses (name, code, department, type) VALUES (:coursename, :coursecode, :coursedepartment, :coursetype);",
           array(
             ':coursename' => $name,
             ':coursecode' => $code,
             ':coursedepartment' => $department,
-            ':coursedescription' => $description,
             ':coursetype' => $type
           )
         );
@@ -118,7 +109,6 @@ const TYPE = array(
         $sticky_values['name'] = $form_values['name'];
         $sticky_values['department'] = $form_values['department'];
         $sticky_values['code'] = $form_values['code'];
-        $sticky_values['description'] = $form_values['description'];
         $sticky_values['core'] = ($form_values['type'] == 'core' ? 'checked' : '');
         $sticky_values['math'] = ($form_values['type'] == 'math' ? 'checked' : '');
         $sticky_values['cs'] = ($form_values['type'] == 'cs' ? 'checked' : '');
@@ -179,55 +169,53 @@ const TYPE = array(
 
 <p class="feedback <?php echo $form_feedback['name']; ?>">Please insert the course name.</p>
         <div class="label-input">
-          <label for="name">Class name:</label>
-          <input id="name" type="text" name="name" value="<?php echo $sticky_values['name']; ?>">
+          <div class="label"><label for="name">Class name:</label></div>
+          <div class="input"><input id="name" type="text" name="name" value="<?php echo $sticky_values['name']; ?>"></div>
         </div>
 
         <p class="feedback <?php echo $form_feedback['department']; ?>">Please insert the department that the course is in.</p>
         <div class="label-input">
-          <label for="department">Department:</label>
-          <input id="department" type="text" name="department" value="<?php echo $sticky_values['department']; ?>">
+          <div class="label"><label for="department">Department:</label></div>
+          <div class="input"><input id="department" type="text" name="department" value="<?php echo $sticky_values['department']; ?>"></div>
         </div>
 
         <p class="feedback <?php echo $form_feedback['code']; ?>">Please insert the course code.</p>
         <div class="label-input">
-          <label for="code">Course Code:</label>
-          <input id="code" type="text" name="code" value="<?php echo $sticky_values['code']; ?>">
+          <div class="label"><label for="code">Course Code:</label></div>
+          <div class="input"><input id="code" type="text" name="code" value="<?php echo $sticky_values['code']; ?>"></div>
         </div>
 
-        <p class="feedback <?php echo $form_feedback['description']; ?>">Please type in a short description for the course.</p>
-        <div class="label-input">
-          <label for="description">Course Description:</label>
-          <input id="description" type="text" name="description" value="<?php echo $sticky_values['description']; ?>">
-        </div>
+
 
         <p class="feedback <?php echo $form_feedback['type']; ?>">Please select at least one type.</p>
-        <div role="group" aria-labelledby="requirement_type">
-          <div id="type">Requirement Type:</div>
+        <div class="label-input" role="group" aria-labelledby="requirement_type">
+          <div class="label" id="type">Requirement Type:</div>
 
-          <div>
-            <div>
-              <input type="radio" id="core" name="type" value="core" <?php echo $sticky_values['core']; ?>>
+            <div class="input">
+              <input type="radio" id="core" name="type" value=0 <?php echo $sticky_values['core']; ?>>
               <label for="core">Core Requirement</label>
-            </div>
             <div>
-              <input type="radio" id="math" name="type" value="math" <?php echo $sticky_values['math']; ?>>
+              <input type="radio" id="math" name="type" value=3 <?php echo $sticky_values['math']; ?>>
               <label for="math">Mathematics Requirement</label>
             </div>
             <div>
-              <input type="radio" id="cs" name="type" value="cs" <?php echo $sticky_values['cs']; ?>>
+              <input type="radio" id="cs" name="type" value=5 <?php echo $sticky_values['cs']; ?>>
               <label for="cs">Computer Science Requirement</label>
             </div>
             <div>
-              <input type="radio" id="elective" name="type" value="elective" <?php echo $sticky_values['elective']; ?>>
+              <input type="radio" id="elective" name="type" value=1 <?php echo $sticky_values['elective']; ?>>
               <label for="elective">Elective</label>
             </div>
             <div>
-              <input type="radio" id="concentration" name="type" value="concentration" <?php echo $sticky_values['concentration']; ?>>
+              <input type="radio" id="concentration" name="type" value=2 <?php echo $sticky_values['concentration']; ?>>
               <label for="concentration">Concentration Requirement</label>
             </div>
+            <div>
+              <input type="radio" id="statistics" name="type" value=4 <?php echo $sticky_values['statistics']; ?>>
+              <label for="statistics">Statistics Requirement</label>
+            </div>
           </div>
-        </div>
+          </div>
 
         <div class="right">
           <input type="submit" value="submit-course" name="submit-course" />
@@ -239,20 +227,28 @@ const TYPE = array(
       <p>We added the course with the following information: </p>
 
 <dl>
-  <dt>Course Name</dt>
-  <dd><?php echo htmlspecialchars($name); ?></dd>
 
-  <dt>Requirement Type</dt>
-  <dd><?php echo htmlspecialchars($type); ?></dd>
+<div class="form">
+<div class="confirmation-row">
+ <div class="label"> <dt>Course Name</dt> </div>
+  <div class="input"> <dd><?php echo htmlspecialchars($record['name']); ?></dd> </div>
+</div>
 
-  <dt>Course Department</dt>
-  <dd><?php echo htmlspecialchars($department); ?></dd>
+<div class="confirmation-row">
+  <div class="label"><dt>Requirement Type</dt> </div>
+  <div class="input"> <dd><?php echo htmlspecialchars(TYPE[$record['type']]); ?></dd> </div>
+</div>
 
-  <dt>Course Code</dt>
-  <dd><?php echo htmlspecialchars($code); ?></dd>
+<div class="confirmation-row">
+ <div class="label"> <dt>Course Department</dt> </div>
+ <div class="input"> <dd><?php echo htmlspecialchars($record['department']); ?></dd> </div>
+</div>
 
-  <dt>Course Description</dt>
-  <dd><?php echo htmlspecialchars($description); ?></dd>
+<div class="confirmation-row">
+ <div class="label"> <dt>Course Code</dt> </div>
+  <div class="input"> <dd><?php echo htmlspecialchars($record['code']); ?></dd> </div>
+</div>
+</div>
 
 </dl>
 <?php } ?>

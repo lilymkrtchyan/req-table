@@ -24,7 +24,7 @@ body {
 }
 
 .right{
-  align-self: end;
+  padding-left: 350px;
 }
 
 .feedback{
@@ -33,4 +33,30 @@ body {
 
 .hidden {
   display: none;
+}
+
+.label-input {
+  display: flex;
+}
+
+.input {
+  align-self: flex-end;
+  padding-bottom: 10px;
+
+}
+
+.label {
+  width: 180px;
+  align-self: flex-start;
+  padding-bottom: 10px;
+}
+
+.confirmation-row{
+  display: flex;
+  flex-direction: row;
+}
+
+.conf{
+  padding-top: 10px;
+  align-items: flex-end;
 }

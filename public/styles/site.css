@@ -7,15 +7,24 @@ table {
     border-spacing: 5px;
     border-top: 2px solid #0f0d0c;
     border-bottom: 2px solid #0f0d0c;
+    border-collapse: collapse;
   }
 
   table tr {
     background-color: rgb(87, 83, 83);
+    border: solid;
+    border-width: 1px;
+    border-color: black;
   }
 
   th{
     margin: 5px;
   }
+
+  td{
+    align-items: center;
+  }
+
 body {
     margin: 30px;
     color: #ede4dc;
@@ -24,7 +33,7 @@ body {
 }
 
 .right{
-  padding-left: 350px;
+  padding-left: 400px;
 }
 
 .feedback{
@@ -35,7 +44,7 @@ body {
   display: none;
 }
 
-.label-input {
+.request {
   display: flex;
 }
 

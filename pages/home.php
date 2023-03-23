@@ -161,26 +161,27 @@ const TYPE = array(
       <?php } ?>
       </table>
 
-      <p>The list of the courses (course numbers, codes, departments, and some of the descriptions) are copied from Cornell University's Information Science website.</p>
+      <p>The list of the courses (course numbers, codes, and departments) are copied from Cornell University's Information Science website.</p>
 </center>
 
+<h4>Insert a new requirement below</h4>
 <?php if (!$show_confirmation) { ?>
 <form method="post" action="/" novalidate>
 
 <p class="feedback <?php echo $form_feedback['name']; ?>">Please insert the course name.</p>
-        <div class="label-input">
+        <div class="request">
           <div class="label"><label for="name">Class name:</label></div>
           <div class="input"><input id="name" type="text" name="name" value="<?php echo $sticky_values['name']; ?>"></div>
         </div>
 
         <p class="feedback <?php echo $form_feedback['department']; ?>">Please insert the department that the course is in.</p>
-        <div class="label-input">
+        <div class="request">
           <div class="label"><label for="department">Department:</label></div>
           <div class="input"><input id="department" type="text" name="department" value="<?php echo $sticky_values['department']; ?>"></div>
         </div>
 
         <p class="feedback <?php echo $form_feedback['code']; ?>">Please insert the course code.</p>
-        <div class="label-input">
+        <div class="request">
           <div class="label"><label for="code">Course Code:</label></div>
           <div class="input"><input id="code" type="text" name="code" value="<?php echo $sticky_values['code']; ?>"></div>
         </div>
@@ -188,7 +189,7 @@ const TYPE = array(
 
 
         <p class="feedback <?php echo $form_feedback['type']; ?>">Please select at least one type.</p>
-        <div class="label-input" role="group" aria-labelledby="requirement_type">
+        <div class="request" role="group" aria-labelledby="type">
           <div class="label" id="type">Requirement Type:</div>
 
             <div class="input">
@@ -218,7 +219,7 @@ const TYPE = array(
           </div>
 
         <div class="right">
-          <input type="submit" value="submit-course" name="submit-course" />
+          <input type="submit" value="Submit Course" name="submit-course" />
         </div>
       </form>
       <?php } else { ?>

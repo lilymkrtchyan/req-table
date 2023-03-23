@@ -149,6 +149,9 @@ This sketch contains filters and a search field, which we shouldn't use for this
 ![Table sketch two](table_sketch_two.jpg)
 This sketch contains the title of the table and all the relevant fields.
 
+![Final Design](final_draft.jpg)
+Final design where I have included an additional design to my insert form. The insert form will ask all the data fields that is in the database (table) and is being displayed, except for the id because it is assigned and autoincremented automatically (and is not displayed as it is used for data processing and the user does not need to see it).
+
 
 ### Catalog Design Patterns (Milestone 1)
 > Explain how you used design patterns for online catalogs in your site's design. (1-2 sentences)
@@ -169,12 +172,10 @@ I sketched a dataset that looks like a table. There are no vertical lines - only
 Table: COURSES
 
 - ID: INTEGER {NN, U, PK, AI},
-- NAME: TEXT {NN, U},
+- NAME: TEXT {NN},
 - TYPE: INTEGER {NN}
 - DEPARTMENT: TEXT {NN}
 - CODE: INTEGER {NN}
-- DESCRIPTION: TEXT {}
-- PRE-REQ: TEXT {}
 
 
 ### Database Query Plan (Milestone 1, Final Submission)
@@ -190,7 +191,13 @@ Table: COURSES
 2. Insert Record (Final Submission)
 
     ```
-    TODO: insert query
+    "INSERT INTO courses (name, code, department, type) VALUES (:coursename, :coursecode, :coursedepartment, :coursetype);",
+          array(
+            ':coursename' => $name,
+            ':coursecode' => $code,
+            ':coursedepartment' => $department,
+            ':coursetype' => $type
+          )
     ```
 
 
@@ -205,10 +212,7 @@ Table: COURSES
   - Not Null
 - code
   - Not Null
-- description
-  - Not Null
-- pre-requisits
-  - No criteria
+
 
 
 ### Form Planning (Milestone 2)
@@ -244,7 +248,7 @@ If sumbitted:
 - type: "Core"
 - code: 1300
 - department: "INFO"
-- description: "This class is an introduction to wev programming and design."
+
 
 **Invalid Test Data:**
 
@@ -252,7 +256,7 @@ If sumbitted:
 - type: not checked - ''
 - department: ''
 - code: 'ababa', '', 0
-- description: ''
+
 
 
 ## Complete & Polished Website (Final Submission)
@@ -261,28 +265,35 @@ If sumbitted:
 > Tell us what issues you discovered during your accessibility audit.
 > What do you do to improve the accessibility of your site?
 
-TODO: audit fixes
+During my accessibility audit I only found out one issue: the aria-labelledby attribute was not referencing to an existing element. As I found out I typed the id of the element that it was supposed to reference wrong. That was the reason of the issue. Once I typed the right id, the issue was resolved.
 
 
 ### Self-Reflection (Final Submission)
 > Reflect on what you learned during this assignment. How have you improved from Project 1? What would you do differently next time? (2-3 sentences)
 
-TODO: reflection
+reflection:
+
+I have improved from project one as now I can process the data that the user inserts through the form and store/display it in a catalog. Next time, I would try to implement more knit table designs to display the data.
 
 
 > Take some time here to reflect on how much you've learned since you started this class. It's often easy to ignore our own progress. Take a moment and think about your accomplishments in this class. Hopefully you'll recognize that you've accomplished a lot and that you should be very proud of those accomplishments! (1-3 sentences)
 
-TODO: reflection
+reflection:
+
+I have learned a lot in terms of server-side rendering and working with data. I have learned how to process and store the data that the user inputs to the forms. I have learned SQL queries. I have also learned different design patterns of catalogs, namely the table and the list paterns. Additionally, I have gained an experience of implementing a catalog that uses the table design pattern.
 
 
 ### Collaborators (Final Submission)
 > List any persons you collaborated with on this project.
 
-TODO: list your collaborators
+list your collaborators:
+
+I have not collaborated with anyone.
 
 
 ### Reference Resources (Final Submission)
 > Please cite any external resources you referenced in the creation of your project.
 > (i.e. W3Schools, StackOverflow, Mozilla, etc.)
 
-TODO: list reference resources
+list reference resources:
+Mozilla documentation (for table attributes)

@@ -12,7 +12,7 @@ const TYPE = array(
     2 => 'Concentration',
     3 => 'Math',
     4 => 'Statistics',
-    5 => 'Coding'
+    5 => 'Computer Science'
   );
 
 
@@ -44,7 +44,8 @@ const TYPE = array(
       'math' => '',
       'cs' => '',
       'elective' => '',
-      'concentration' => ''
+      'concentration' => '',
+      'statistics' => ''
     );
 
   $db = open_sqlite_db('secure/site.sqlite');
@@ -109,12 +110,12 @@ const TYPE = array(
         $sticky_values['name'] = $form_values['name'];
         $sticky_values['department'] = $form_values['department'];
         $sticky_values['code'] = $form_values['code'];
-        $sticky_values['core'] = ($form_values['type'] == 'core' ? 'checked' : '');
-        $sticky_values['math'] = ($form_values['type'] == 'math' ? 'checked' : '');
-        $sticky_values['cs'] = ($form_values['type'] == 'cs' ? 'checked' : '');
-        $sticky_values['elective'] = ($form_values['type'] == 'elective' ? 'checked' : '');
-        $sticky_values['concentration'] = ($form_values['type'] == 'concentration' ? 'checked' : '');
-
+        $sticky_values['core'] = ($form_values['type'] == 0 ? 'checked' : '');
+        $sticky_values['math'] = ($form_values['type'] == 3 ? 'checked' : '');
+        $sticky_values['cs'] = ($form_values['type'] == 5 ? 'checked' : '');
+        $sticky_values['elective'] = ($form_values['type'] == 1 ? 'checked' : '');
+        $sticky_values['concentration'] = ($form_values['type'] == 2 ? 'checked' : '');
+        $sticky_values['statistics'] = ($form_values['statistics'] == 4 ? 'checked' : '');
           }
     }
 
@@ -184,6 +185,7 @@ const TYPE = array(
         <div class="request">
           <div class="label"><label for="code">Course Code:</label></div>
           <div class="input"><input id="code" type="text" name="code" value="<?php echo $sticky_values['code']; ?>"></div>
+
         </div>
 
 
